@@ -20,16 +20,16 @@ namespace StudentSOAP
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        void AddStudent(string name, int semester, int age);
+        Student AddStudent(string name, int semester, int age);
 
         [OperationContract]
-        string FindStudent(string name);
+        Student FindStudent(string name);
 
         [OperationContract]
-        void DeleteStudent(Student studentA);
+        void DeleteStudent(int index);
 
         [OperationContract]
-        void EditStudent(Student studentA, Student studentB);
+        Student EditStudent(int index, Student studentB);
 
         [OperationContract]
         List<Student> GetAllStudent();

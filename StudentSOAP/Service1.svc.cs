@@ -14,30 +14,31 @@ namespace StudentSOAP
     {
         static List<Student> listOfStudents = new List<Student>();
 
-        public void AddStudent(string name, int semester, int age)
+        public Student AddStudent(string name, int semester, int age)
         {
             Student newStudent = new Student();
             newStudent.Name = name;
             newStudent.Semester = semester;
             newStudent.Age = age;
             listOfStudents.Add(newStudent);
+            return newStudent;
         }
 
-        public void DeleteStudent(Student studentA)
+        public void DeleteStudent(int index)
         {
-            listOfStudents.Remove(studentA);
+            listOfStudents.RemoveAt(index);
         }
 
-        public void EditStudent(Student Before, Student After)
+        public Student EditStudent(int Before, Student After)
         {
-            listOfStudents.Remove(Before);
+            listOfStudents.RemoveAt(Before);
             listOfStudents.Add(After);
+            return After;
         }
 
-        public string FindStudent(string name)
+        public Student FindStudent(string name)
         {
-            var find = listOfStudents.Find(Student => Student.Name == name);
-            
+           return listOfStudents.Find(Student => Student.Name == name);
         }
 
         public List<Student> GetAllStudent()
