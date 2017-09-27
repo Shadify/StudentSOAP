@@ -12,12 +12,34 @@ namespace SOAPConsumer
         static void Main(string[] args)
         {
             Service1Client client = new Service1Client("BasicHttpBinding_IService1");
-            client.AddStudent("Bob", 3, 15);
-            client.FindStudent("Bob");
-            client.AddStudent("Bob1", 4, 16);
-            client.GetAllStudent();
-            client.DeleteStudent(1);
-            client.GetAllStudent();
+            Student a = client.AddStudent("Bob", 3, 15);
+
+            Console.WriteLine("Name: " + a.Name + " Age: " + a.Age + " Semester: " + a.Semester);
+  
+            Student found = client.FindStudent("Bob");
+            Console.WriteLine(found.Name + found.Age + found.Semester);
+
+            Student b = client.AddStudent("Bob1", 4, 16);
+
+            Console.WriteLine(b.Name + b.Age + b.Semester);
+
+            var c = client.GetAllStudent();
+
+            Console.WriteLine("List of students");
+            foreach (var student in c)
+            {
+                Console.WriteLine(student.Name);
+            }
+
+            client.DeleteStudent(0);
+
+            var d = client.GetAllStudent();
+
+            Console.WriteLine("List of students 2.0");
+            foreach (var student in d)
+            {
+                Console.WriteLine(student.Name);
+            }
             Console.ReadLine();
         }
     }

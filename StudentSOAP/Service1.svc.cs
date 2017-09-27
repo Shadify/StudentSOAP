@@ -29,9 +29,9 @@ namespace StudentSOAP
             listOfStudents.RemoveAt(index);
         }
 
-        public Student EditStudent(int Before, Student After)
+        public Student EditStudent(Student Before, Student After)
         {
-            listOfStudents.RemoveAt(Before);
+            listOfStudents.Remove(Before);
             listOfStudents.Add(After);
             return After;
         }

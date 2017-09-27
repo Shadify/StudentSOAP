@@ -29,7 +29,7 @@ namespace StudentSOAP
         void DeleteStudent(int index);
 
         [OperationContract]
-        Student EditStudent(int index, Student studentB);
+        Student EditStudent(Student studentA, Student studentB);
 
         [OperationContract]
         List<Student> GetAllStudent();
@@ -41,9 +41,19 @@ namespace StudentSOAP
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     public class Student
     {
+        [DataMember]
         public string Name { get; set; }
+
+        [DataMember]
         public int Semester { get; set; }
+
+        [DataMember]
         public int Age { get; set; }
+
+        public override string ToString()
+        {
+            return " Name: " + Name + " Semester: " + Semester + " Age: " + Age;
+        }
     }
 
 
